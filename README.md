@@ -24,6 +24,24 @@ What this does:
 3. Clones dataset repo to `data/pokedex` if missing.
 4. Imports Pokemon data into Convex table `pokedex` (replace mode).
 
+## Clone and restore submodules
+
+`apps/card-tower` is tracked as a Git submodule. On a fresh machine:
+
+```powershell
+git clone https://github.com/10thony/pokedex-learner.git
+cd pokedex-learner
+git submodule update --init --recursive
+```
+
+If you cloned before the submodule was added:
+
+```powershell
+git pull
+git submodule sync --recursive
+git submodule update --init --recursive
+```
+
 ## Convex foundation
 
 The project now includes a typed Convex schema in `convex/schema.ts` and starter typed

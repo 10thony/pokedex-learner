@@ -24,6 +24,33 @@ What this does:
 3. Clones dataset repo to `data/pokedex` if missing.
 4. Imports Pokemon data into Convex table `pokedex` (replace mode).
 
+## Convex foundation
+
+The project now includes a typed Convex schema in `convex/schema.ts` and starter typed
+queries in `convex/pokedex.ts` for:
+
+- fetching one Pokemon by dex number (`getByDexNumber`)
+- listing Pokemon by primary type with pagination (`listByType`)
+
+Run `npx convex dev` from repo root to generate `convex/_generated/*` type files.
+
+## Card Tower app (React + TypeScript)
+
+The `apps/card-tower` app has been migrated to React + TypeScript with Vite.
+
+```powershell
+cd apps/card-tower
+npm install
+npm run dev
+```
+
+Optional production build:
+
+```powershell
+npm run build
+npm run server
+```
+
 ## Useful commands
 
 - Restart infra:

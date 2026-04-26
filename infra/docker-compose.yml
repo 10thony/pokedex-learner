@@ -1,6 +1,7 @@
 services:
   backend:
     image: ghcr.io/get-convex/convex-backend:latest
+    container_name: pokedex-convex
     stop_grace_period: 10s
     stop_signal: SIGINT
     ports:
@@ -50,6 +51,7 @@ services:
 
   dashboard:
     image: ghcr.io/get-convex/convex-dashboard:latest
+    container_name: pokedex-convex-dashboard
     stop_grace_period: 10s
     stop_signal: SIGINT
     ports:

@@ -1,0 +1,3 @@
+[submodule "apps/card-tower"]
+	path = apps/card-tower
+	url = https://github.com/10thony/card-tower.git

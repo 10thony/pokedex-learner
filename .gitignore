@@ -1,3 +1,7 @@
 .env.local
 data/pokedex/
 data/pokedex/data/pokemon.comma.csv
+node_modules/
+**/node_modules/
+dist/
+**/dist/

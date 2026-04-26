@@ -1,0 +1,8 @@
+{
+  "name": "pokedex-speller",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "convex": "^1.36.1"
+  }
+}

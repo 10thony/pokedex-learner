@@ -52,9 +52,7 @@ queries in `convex/pokedex.ts` for:
 
 Run `npx convex dev` from repo root to generate `convex/_generated/*` type files.
 
-## Card Tower app (React + TypeScript)
-
-The `apps/card-tower` app has been migrated to React + TypeScript with Vite.
+## PokiStack app
 
 ```powershell
 cd apps/card-tower
@@ -62,12 +60,72 @@ npm install
 npm run dev
 ```
 
+`npm run dev` serves the game at `http://localhost:4321` (single server, no Vite port needed).
+
+Modern Vite app (recommended for Netlify and cloud Convex):
+
+```powershell
+cd apps/card-tower
+pnpm install
+pnpm run dev:web
+```
+
+This serves the React app at `http://localhost:4322`, with the game route at
+`http://localhost:4322/54321`.
+
 Optional production build:
 
 ```powershell
 npm run build
-npm run server
+npm run start
 ```
+
+## Netlify publish setup
+
+The repo includes `netlify.toml` configured to publish only the modern app:
+
+- Base: `apps/card-tower`
+- Build command: `pnpm build`
+- Publish directory: `dist`
+
+Legacy assets are kept under `apps/card-tower/legacy` and excluded via
+`apps/card-tower/.netlifyignore`.
+
+For SPA routing on Netlify, `apps/card-tower/public/_redirects` rewrites all
+paths to `index.html`.
+
+## Convex cloud connection + seeding
+
+Cloud URLs for this project:
+
+- Convex URL: `https://resilient-orca-880.convex.cloud`
+- HTTP Actions URL: `https://resilient-orca-880.convex.site`
+
+For local React testing against cloud, set:
+
+```powershell
+cd apps/card-tower
+echo VITE_CONVEX_URL=https://resilient-orca-880.convex.cloud > .env.local
+pnpm run dev:web
+```
+
+### Seed cloud directly from local Convex
+
+1. Ensure your local self-hosted Convex is running and seeded.
+2. Log in to Convex CLI for cloud access:
+
+```powershell
+npx convex@latest login
+```
+
+3. Run the sync script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File infra/sync-local-to-cloud.ps1 -CloudDeployment resilient-orca-880
+```
+
+This exports a local snapshot and imports it into the cloud deployment with
+`--replace-all`.
 
 ## Useful commands
 

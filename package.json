@@ -2,7 +2,16 @@
   "name": "pokedex-speller",
   "private": true,
   "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:card-tower\" \"pnpm run dev:web\" \"pnpm run dev:convex\"",
+    "dev:card-tower": "pnpm --dir apps/card-tower run dev",
+    "dev:web": "pnpm --dir apps/card-tower run dev:web",
+    "dev:convex": "convex dev"
+  },
   "dependencies": {
     "convex": "^1.36.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

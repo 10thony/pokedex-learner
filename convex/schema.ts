@@ -2,6 +2,12 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
+  cardTowerHighscores: defineTable({
+    name: v.string(),
+    score: v.number(),
+    cards: v.number(),
+    rows: v.number()
+  }).index("by_score", ["score"]),
   pokedex: defineTable({
     dexNumber: v.optional(v.union(v.number(), v.null())),
     name: v.optional(v.union(v.string(), v.null())),

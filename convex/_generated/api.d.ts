@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as cardTowerHighscores from "../cardTowerHighscores.js";
 import type * as pokedex from "../pokedex.js";
 
 import type {
@@ -17,6 +18,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  cardTowerHighscores: typeof cardTowerHighscores;
   pokedex: typeof pokedex;
 }>;
 
